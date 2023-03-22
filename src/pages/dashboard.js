@@ -1,9 +1,18 @@
 import AppLayout from '@/components/Layouts/AppLayout'
 import Head from 'next/head'
+import { useState } from 'react';
 
 const Dashboard = () => {
+    
+  
+  const [openSearch, setOpenSearch] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  
     return (
-        <AppLayout
+        <>
+             
+
+        <AppLayout openSearch={openSearch} openCart={openCart}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
                     Dashboard
@@ -24,6 +33,7 @@ const Dashboard = () => {
                 </div>
             </div>
         </AppLayout>
+        </>
     )
 }
 

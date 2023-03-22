@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@heroicons/react/24/outline"
+import Link from "next/link"
 import Currency from "./currency"
 export default function TopBanner({currencies}) {
 
@@ -18,13 +18,13 @@ export default function TopBanner({currencies}) {
         </p>
 
         <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6 w-min">
-          <a href="#" className="text-sm font-medium text-white hover:text-gray-100">
+          <Link href={'/login'} className="text-sm font-medium text-white hover:text-gray-100">
             Create an account
-          </a>
+          </Link>
           <span className="h-6 w-px bg-gray-600" aria-hidden="true" />
-          <a href="#" className="text-sm font-medium text-white hover:text-gray-100">
+          <Link href={'/login'} className="text-sm font-medium text-white hover:text-gray-100">
             Sign in
-          </a>
+          </Link>
         </div>
       </div>
     </div>
