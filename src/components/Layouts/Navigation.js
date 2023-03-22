@@ -31,11 +31,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Navigation({clickSearch, clickCart}) {
+export default function Navigation({user, clickSearch, clickCart}) {
 
-  function test() {
-    console.log('zoeker: ');
-  }
+  
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const [categories, setCategories] = useState([]);
@@ -87,7 +85,7 @@ export default function Navigation({clickSearch, clickCart}) {
             
      
 
-      <TopBanner currencies={currencies}/>
+      <TopBanner currencies={currencies} user={user}/>
           
 <header>
   <nav>
@@ -143,6 +141,7 @@ export default function Navigation({clickSearch, clickCart}) {
                       
 
                       <LoginIcon />
+
                       </div>
 
                       <span className="mx-4 h-6 w-px bg-gray-200 lg:mx-6" aria-hidden="true" />

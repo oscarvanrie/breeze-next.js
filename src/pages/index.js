@@ -5,10 +5,13 @@ import Navigation from '@/components/Layouts/Navigation';
 import SearchBar from '@/components/SearchBar';
 import ShoppingCart from '@/components/Layouts/ShoppingCart'
 import Link from 'next/link';
+import AppLayout from '@/components/Layouts/AppLayout';
 
 
 
 export default function Home() {
+
+    const [currentUserInfo, setcurrentUserInfo] = useState({});
 
   
   const [openSearch, setOpenSearch] = useState(false);
@@ -30,8 +33,9 @@ export default function Home() {
   return (
 
  
-    <div id="root">
-
+    
+    
+    <AppLayout openSearch={openSearch} openCart={openCart}>
       <Navigation clickCart={clickCart} clickSearch={clickSearch} />
       
       
@@ -41,9 +45,10 @@ export default function Home() {
       
       <ShoppingCart open = {openCart} setOpen = {setOpenCart}/>
 
-
       
-    </div>
+    </AppLayout>
+      
+    
 
     
     

@@ -1,8 +1,14 @@
 import Navigation from '@/components/Layouts/Navigation'
 import { useAuth } from '@/hooks/auth'
+import React from 'react';
+import cookie from 'cookie';
+
+
 
 const AppLayout = ({ header, children, openSearch, openCart }) => {
     const { user } = useAuth({ middleware: 'auth' })
+
+    
 
     return (
         <div className="min-h-screen bg-gray-100">
