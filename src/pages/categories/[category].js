@@ -10,6 +10,7 @@ import ShoppingCart from '@/components/Layouts/ShoppingCart';
 import {useRouter} from 'next/router'
 import fetchSubCategories from '@/hooks/api/fetchSubCategories';
 import SubMenu from '@/components/Layouts/SubMenu';
+import AppLayout from '@/components/Layouts/AppLayout';
 
 export default function Category() {
   
@@ -68,15 +69,7 @@ export default function Category() {
  
     <div id="root">
 
-      <Navigation clickCart={clickCart} clickSearch={clickSearch} />
-      
-      
-      
-      <SearchBar open = {openSearch} setOpen = {setOpenSearch}/>
-      
-      
-      <ShoppingCart open = {openCart} setOpen = {setOpenCart}/>
-
+      <AppLayout ></AppLayout>
       <SubMenu subCategorieArray={subCategories} categorieName={selectedName} /> 
 
 

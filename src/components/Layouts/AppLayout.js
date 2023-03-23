@@ -2,27 +2,38 @@ import Navigation from '@/components/Layouts/Navigation'
 import { useAuth } from '@/hooks/auth'
 import React from 'react';
 import cookie from 'cookie';
+import { useState } from 'react';
+import SearchBar from '../SearchBar';
+import ShoppingCart from './ShoppingCart';
 
 
 
-const AppLayout = ({ header, children, openSearch, openCart }) => {
-    const { user } = useAuth({ middleware: 'auth' })
+const AppLayout = ({ header, children }) => {   
+    const { user } = useAuth({ middleware: 'auth' });
 
     
+    const [openSearch, setOpenSearch] = useState(false);
+    const [openCart, setOpenCart] = useState(false);
+    function SearchIsClicked() {
+        setOpenSearch(!openSearch);
+    }
+    function CartIsClicked() {
+        setOpenCart(!openCart);
+
+    }
+
+
+
+
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <Navigation user={user} openCart={openCart} openSearch={openSearch} />
+        <div>
+            <Navigation user={user} clickCart={CartIsClicked} clickSearch={SearchIsClicked} />
+            <SearchBar open={openSearch} setOpen={setOpenSearch}/>
+            <ShoppingCart open={openCart} setOpen={setOpenCart} />
+           
+            
 
-            {/* Page Heading */}
-            <header className="bg-white shadow">
-                <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {header}
-                </div>
-            </header>
-
-            {/* Page Content */}
-            <main>{children}</main>
         </div>
     )
 }

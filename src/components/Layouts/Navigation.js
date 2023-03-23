@@ -22,7 +22,6 @@ const navigation = {
   menu: [{0:[{},]}],
 
   pages: [
-    { name: 'Home', href: '/home' },
     { name: 'Products', href: '/products' },
   ],
 }
@@ -31,7 +30,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Navigation({user, clickSearch, clickCart}) {
+export default function Navigation({user, clickSearch, clickCart, setUser, }) {
 
   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -57,7 +56,6 @@ export default function Navigation({user, clickSearch, clickCart}) {
       try {
         const response = await fetchSubCategories();
         setsubCategories(response.data);
-        console.log(subCategories);
 
         return response.data;
       } catch (error) {
@@ -85,7 +83,7 @@ export default function Navigation({user, clickSearch, clickCart}) {
             
      
 
-      <TopBanner currencies={currencies} user={user}/>
+      <TopBanner currencies={currencies} user={user} setUser={setUser}/>
           
 <header>
   <nav>
@@ -140,7 +138,7 @@ export default function Navigation({user, clickSearch, clickCart}) {
                       </div>
                       
 
-                      <LoginIcon />
+                      <LoginIcon user={user}/>
 
                       </div>
 

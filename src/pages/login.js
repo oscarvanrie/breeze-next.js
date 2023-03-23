@@ -21,11 +21,11 @@ const Login = () => {
         redirectIfAuthenticated: '/dashboard',
     })
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [shouldRemember, setShouldRemember] = useState(false)
-    const [errors, setErrors] = useState([])
-    const [status, setStatus] = useState(null)
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [shouldRemember, setShouldRemember] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [status, setStatus] = useState(null);
 
     useEffect(() => {
         if (router.query.reset?.length > 0 && errors.length === 0) {
@@ -118,6 +118,7 @@ const Login = () => {
                     </div>
 
                     <div className="flex items-center justify-end mt-4">
+
                         <Link
                             href="/forgot-password"
                             className="underline text-sm text-gray-600 hover:text-gray-900">
@@ -126,6 +127,11 @@ const Login = () => {
 
                         <Button className="ml-3">Login</Button>
                     </div>
+                    <Link
+                            href="/register"
+                            className="underline text-sm text-gray-600 hover:text-gray-900">
+                            Don't have a count?
+                    </Link>
                 </form>
             </AuthCard>
         </GuestLayout>

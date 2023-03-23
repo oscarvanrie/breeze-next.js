@@ -1,28 +1,25 @@
 import Link from "next/link"
-export default function SignInCorner(user) {
-    if (user.user == undefined) {
-           return(
-        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6 w-min">
-        <Link href={'/login'} className="text-sm font-medium text-white hover:text-gray-100">
-          Create an account
-        </Link>
-        <span className="h-6 w-px bg-gray-600" aria-hidden="true" />
-        <Link href={'/login'} className="text-sm font-medium text-white hover:text-gray-100">
-          Sign in
-        </Link>
-      </div>
-    ) 
-    } else {
+import { useAuth } from "@/hooks/auth"
+export default function SignInCorner({user}) {
+  
+  const { logout } = useAuth()
+  console.log(user);
+
+  if (user == undefined) {
+    return (
+      <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6 w-min">
+
+
+
+</div>
+    )
+  }
     return (
         <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6 w-min">
-            <p className="text-white">{user.user.name}</p>
+            <p className="text-white">{user.name}</p>
 
-        <span className="h-6 w-px bg-gray-600" aria-hidden="true" />
-        <Link href={'/login'} className="text-sm font-medium text-white hover:text-gray-100">
-          Log out
-        </Link>
+
       </div>
     )
-    }
 
 }

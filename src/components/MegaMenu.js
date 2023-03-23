@@ -40,7 +40,7 @@ export default function MegaMenu({navigation, subCategories}) {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Popover.Panel className="absolute inset-x-0 top-full text-gray-500 sm:text-sm">
+                    <Popover.Panel className="absolute inset-x-0  text-gray-500 text-sm mt-14">
                       <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
           
                       <div className="relative bg-white">
@@ -78,8 +78,8 @@ export default function MegaMenu({navigation, subCategories}) {
                                 </div>
                               </div> 
                             </div>
-                          </Popover.Panel>
-                        </Transition>
+                    </Popover.Panel>
+                  </Transition>
                       </>
                     )}
                   </Popover>

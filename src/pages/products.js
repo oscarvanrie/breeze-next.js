@@ -8,6 +8,7 @@ import ShoppingCart from '@/components/Layouts/ShoppingCart'
 import Link from 'next/link';
 import fetchProducts from '@/hooks/api/fetchProducts';
 import Product from '@/components/Layouts/Product';
+import AppLayout from '@/components/Layouts/AppLayout';
 
 
 
@@ -45,18 +46,11 @@ export default function Home() {
 
  
     <div id="root">
-
-      <Navigation clickCart={clickCart} clickSearch={clickSearch} />
-      
-      
-      
-      <SearchBar open = {openSearch} setOpen = {setOpenSearch}/>
-      
-      
-      <ShoppingCart open = {openCart} setOpen = {setOpenCart}/>
+      <AppLayout>
 
 
-      <Product products={products} />
+      </AppLayout>
+      <Product products={products} />      
 
        
 

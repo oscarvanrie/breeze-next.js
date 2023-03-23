@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import Product from '@/components/Layouts/Product';
 import fetchProducts from '@/hooks/api/fetchProducts';
 import SideNav from '@/components/Layouts/SideNav';
+import AppLayout from '@/components/Layouts/AppLayout';
 
 export default function Category() {
   
@@ -65,15 +66,7 @@ export default function Category() {
  
     <div id="root">
 
-      <Navigation clickCart={clickCart} clickSearch={clickSearch} />
-      
-      
-      
-      <SearchBar open = {openSearch} setOpen = {setOpenSearch}/>
-      
-      
-      <ShoppingCart open = {openCart} setOpen = {setOpenCart}/>
-
+      <AppLayout ></AppLayout>
 
 
       <div className='flex'>
