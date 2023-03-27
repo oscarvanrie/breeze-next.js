@@ -7,13 +7,33 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import HeaderFilter from '../HeaderFilter';
 import CheckBox from '../CheckBox';
 import SubCatSelector from '../subCatSelector';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSeedling, faIcicles,  faGift, faBox} from '@fortawesome/free-solid-svg-icons';
+import AllergenenCheckBox from '../AllergenenCheckBox';
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
+/*
+    const [alergenen, setAlergenen] = useState([
+      {name: 'Vegan', icon: faSeedling, selected: false},
+      {name: 'Vegie', icon: faSeedling, selected: false},
+      {name: 'Frozen', icon: faIcicles, selected: false},
+      {name: 'Holiday', icon: faGift, selected: false},
+      {name: 'HomeGrown', icon: faSeedling, selected: false},
+      {name: 'sold out', icon: faBox, selected: false}
+    ]);
 
-export default function SideNav(catSlug) {
-    catSlug = catSlug.catSlug;
+    function changeCheckBox(index, s) {
+      alergenen[index].selected = !s;
+      setAlergenen(alergenen);
+      setAlergenen(alergenen);
+    }
+*/
+
+export default function SideNav({catSlug, alergenen, setAlergenen, changeCheckBox}) {
 
 
 
@@ -36,11 +56,9 @@ export default function SideNav(catSlug) {
 
 
             } else {
-              console.log(`Invalid categorieID: ${categorieID}`);
             }
             return response.data;
           } catch (error) {
-            console.log(error);
           }
         };
           
@@ -55,11 +73,9 @@ export default function SideNav(catSlug) {
 
         if (subcat.slug === catSlug) {
           element.push(item);
-          console.log(element);
           filteredCategories = element;
           if (i != selectedIndex) {
             setSelectedIndex(i);
-            console.log(i);
           }
 
           
@@ -69,15 +85,11 @@ export default function SideNav(catSlug) {
     });
 
 
-    function test() {
-        console.log(subCategories);
-        
-    }
 
-    test();
 
 
   return (
+    <>
     <form className="mt-4">
     {filteredCategories.map((section) => (
       <Disclosure as="div" key={section.name} className="border-t border-gray-200 pt-4 pb-4">
@@ -98,7 +110,37 @@ export default function SideNav(catSlug) {
         )}
       </Disclosure>
     ))}
+      <Disclosure as="div" key={'section.name'} className="border-t border-gray-200 pt-4 pb-4">
+        {({ open }) => (
+          <fieldset>
+            <HeaderFilter title={'Alergenen'} open={open} />
+
+            <Disclosure.Panel className="px-4 pt-4 pb-2">
+              <div className="space-y-6">
+                {alergenen.map ((alergeen, index) => (
+                  <div key={alergeen.name} className="flex items-center" >
+                    <div  onClick={() => {changeCheckBox(index, alergeen.selected)}}>
+                      <AllergenenCheckBox selected={alergeen.selected} />
+                    </div>
+                    <FontAwesomeIcon icon={alergeen.icon} className='ml-3' />      
+                    <label className="ml-3 text-sm text-gray-500">
+                    {alergeen.name}
+                    </label>
+                   </div>
+                ))}
+                
+              </div>
+            </Disclosure.Panel>
+          </fieldset>
+        )}
+      </Disclosure>
+
+
+
+
   </form>
+  
+  </>
   )
 }
 

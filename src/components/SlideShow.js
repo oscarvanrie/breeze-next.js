@@ -1,39 +1,54 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
+
+import React from "react";
+import SimpleImageSlider from "react-simple-image-slider";
+import {useEffect, useState} from 'react';
 
 export default function SlideShow() {
-
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  function getWindowSize() {
+    
+  }
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
     }
 
-    return (
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
+
+  
+   const sliderImages = [
+      {
+         url: "https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2021/10/image2-2-1024x649.png",
+      },
+      {
+         url: "https://luminous-landscape.com/wp-content/uploads/2015/06/Storm-Light-Grand-Tetons-810x500.jpg",
+      },
+      {
+         url: "https://cdn.fstoppers.com/styles/full/s3/media/2022/01/25/mount-moran-day.jpg",
+      },
+      {
+         url: "https://petapixel.com/assets/uploads/2022/08/fdfs11-800x533.jpg",
+      }
+   ];
+   
+   return (
       <div>
-        <h2> Single Item</h2>
-        <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-        </Slider>
+         <SimpleImageSlider
+            width={1530}
+            height={500}
+            images={sliderImages}
+            showNavs={true}
+            showBullets={true}
+            autoPlay={true}
+            autoPlayDelay={5}
+            navSize={30}
+         />
       </div>
-    );
-  }
+   );
+}

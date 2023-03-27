@@ -3,7 +3,6 @@ import { useAuth } from "@/hooks/auth"
 export default function SignInCorner({user}) {
   
   const { logout } = useAuth()
-  console.log(user);
 
   if (user == undefined) {
     return (

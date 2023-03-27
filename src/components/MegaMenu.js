@@ -6,7 +6,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 export default function MegaMenu({navigation, subCategories}) {
-    console.log(typeof(subCategories));
+  
     
     return(
         

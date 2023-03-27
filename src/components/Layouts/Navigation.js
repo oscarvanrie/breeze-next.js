@@ -59,16 +59,12 @@ export default function Navigation({user, clickSearch, clickCart, setUser, }) {
 
         return response.data;
       } catch (error) {
-        console.log(error);
       }
     };
       
     fetchData();
   }, []);
 
-  function test() {
-    console.log(subCategories);
-  }
 
   
 

@@ -7,6 +7,7 @@ import ShoppingCart from '@/components/Layouts/ShoppingCart'
 import Link from 'next/link';
 import AppLayout from '@/components/Layouts/AppLayout';
 import SlideShow from '@/components/SlideShow';
+import NieuwsteProducten from '@/components/NieuwsteProducten';
 
 
 
@@ -34,6 +35,7 @@ export default function Home() {
     </AppLayout>
 
     <SlideShow />
+    <NieuwsteProducten />
       
     
 </>
