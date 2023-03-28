@@ -3,6 +3,8 @@ import { Disclosure } from '@headlessui/react'
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import {Logo} from '@/components/Logo'
 
+import AppLayout from '@/components/Layouts/AppLayout';
+
 const subtotal = '$210.00'
 const discount = { code: 'CHEAPSKATE', amount: '$24.00' }
 const taxes = '$23.68'
@@ -26,7 +28,22 @@ const products = [
 export default function checkout() {
   return (
     <>
-    <h2>hello</h2>
+
+    
+<AppLayout
+    header={
+        <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+            Dashboard
+        </h2>
+    }>
+
+
+<CheckoutForm />
+</AppLayout>
+
+
+
+
     </>
   )
 }

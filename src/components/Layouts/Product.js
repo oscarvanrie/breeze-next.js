@@ -1,7 +1,7 @@
 import NoProductsFound from "../NoProductsFound";
 import SingleProduct from "../SingleProduct";
 export default function Product({products}) {
-
+  
 
   if (products[0] == undefined) {
     return (
@@ -10,8 +10,8 @@ export default function Product({products}) {
   } else {
 
     return(
-      <div className="bg-white">
-          <div className="mx-auto max-w-2xl pb-16 px-4 sm:pb-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="bg-white mt-10">
+          <div className="mx-auto max-w-2xl pb-16 px-4 sm:pb-10 sm:px-6 lg:max-w-7xl lg:px-8">
 
 
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
@@ -27,5 +27,7 @@ export default function Product({products}) {
     
 }
 
+// http://192.168.10.208\api\login
 
+// http://id207038_api.db.webhosting.be/api/login
 

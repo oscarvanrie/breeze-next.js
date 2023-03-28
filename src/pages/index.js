@@ -8,6 +8,7 @@ import Link from 'next/link';
 import AppLayout from '@/components/Layouts/AppLayout';
 import SlideShow from '@/components/SlideShow';
 import NieuwsteProducten from '@/components/NieuwsteProducten';
+import Footer from '@/components/Footer';
 
 
 
@@ -30,12 +31,14 @@ export default function Home() {
     
     <AppLayout>
 
-
+    <SlideShow />
+    <NieuwsteProducten />
       
     </AppLayout>
 
-    <SlideShow />
-    <NieuwsteProducten />
+
+
+
       
     
 </>

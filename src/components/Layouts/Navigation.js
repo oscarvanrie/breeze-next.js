@@ -23,6 +23,7 @@ const navigation = {
 
   pages: [
     { name: 'Products', href: '/products' },
+    {name: 'neem contact op', href:'/contact'}
   ],
 }
 

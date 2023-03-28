@@ -65,6 +65,34 @@ export default function UserOptions({user}) {
           </Link>
         )}
       </Menu.Item>
+      <Menu.Item>
+        {({ active }) => (
+
+        <Link
+          href={'/accountSettings/'}
+          className={classNames(
+          active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+          'block px-4 py-2 text-sm'
+        )}
+        >
+          Acount Page
+        </Link>
+        )}
+      </Menu.Item>
+      <Menu.Item>
+        {({ active }) => (
+
+        <Link
+          href={'/adressPage/'}
+          className={classNames(
+          active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+          'block px-4 py-2 text-sm'
+        )}
+        >
+          Adress boek
+        </Link>
+        )}
+      </Menu.Item>
 
 
 </>

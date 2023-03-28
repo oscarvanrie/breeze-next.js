@@ -69,8 +69,10 @@ export default function Category() {
  
     <div id="root">
 
-      <AppLayout ></AppLayout>
-      <SubMenu subCategorieArray={subCategories} categorieName={selectedName} /> 
+      <AppLayout >
+        <SubMenu subCategorieArray={subCategories} categorieName={selectedName} />
+      </AppLayout>
+       
 
 
       

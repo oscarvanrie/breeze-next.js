@@ -11,21 +11,21 @@ import { faSeedling, faIcicles, faGift, faBox } from '@fortawesome/free-solid-sv
 
 export default function Category() {
   
-  const [openSearch, setOpenSearch] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
+
+  
   
   const router = useRouter();
   const categorySlug = router.query.products;
-  var origineelProduct = [];
-  
   
   
 
   
   const [products, setProducts] = useState([]);
+  const [origineleProducts, setOrigineleProducts] = useState([]);
 
   var arrayData= [];
-  
+
+
 
 
   useEffect(() => {
@@ -33,14 +33,19 @@ export default function Category() {
     const fetchData = async () => {      
       const response = await fetchProducts();
       setProducts(response.data);
+      
+      
       for (var i = 0; i < response.data.length; i++) {
         if (response.data[i].subcategory.slug == categorySlug) {
           arrayData.push(response.data[i]);
 
         }
       }
+      console.log('veranderd');
+      setOrigineleProducts(arrayData);
+      
+      
       setProducts(arrayData);
-      origineelProduct = arrayData;
       return arrayData;
     };
 
@@ -51,129 +56,108 @@ export default function Category() {
 
 
 
-
   
   const [alergenen, setAlergenen] = useState([
-    {name: 'Vegan', icon: faSeedling, selected: false},
     {name: 'Vegie', icon: faSeedling, selected: false},
+    {name: 'Vegan', icon: faSeedling, selected: false},
+    {name: 'sold out', icon: faBox, selected: false},
     {name: 'Frozen', icon: faIcicles, selected: false},
-    {name: 'Holiday', icon: faGift, selected: false},
     {name: 'HomeGrown', icon: faSeedling, selected: false},
-    {name: 'sold out', icon: faBox, selected: false}
+    {name: 'Holiday', icon: faGift, selected: false}
   ]);
 
 
   function changeCheckBox(index, s) {
+    setProducts(origineleProducts);
+    console.log(products);
+
+    
     alergenen[index].selected = !s;
     setAlergenen(alergenen);
-    setProducts(origineelProduct);
     var nieuweProducten = products;
     var indexesToRemove = [];
 
-    for (var i = products.length - 1; i >= 0; i--) {
-      if (products[i].is_vegan == 1 && alergenen[0].selected == true) {
-        indexesToRemove.push(i);
-      } 
-      if (products[i].is_veggie == 1 && alergenen[1].selected == true) {
-        indexesToRemove.push(i);
-      } 
-      if (products[i].is_frozen == 1 && alergenen[2].selected == true) {
-        indexesToRemove.push(i);
-      }
-      if (products[i].is_holiday == 1 && alergenen[3].selected == true) {
-        indexesToRemove.push(i);
-      } 
-      if (products[i].is_home_grown == 1 && alergenen[4].selected == true) {
-        indexesToRemove.push(i);
-      } 
-      if (products[i].is_sold_out == 1 && alergenen[5].selected == true) {
-        indexesToRemove.push(i);
-      } 
-    }
-  
-    for (var j = 0; j < indexesToRemove.length; j++) {
-      nieuweProducten.splice(indexesToRemove[j], 1);
-      setProducts(products);
+
+    // Veggie = 1
+    // Vegan = 2
+    // sold out = 3
+    // Frozen = 4
+    // homegrown = 5
+    // Holiday = 6
+  var selectedAlergenen = [];
+  for (var a = 0; a < alergenen.length; a++) {
+    if (alergenen[a].selected == true) {
+      selectedAlergenen.push(a + 1);
+
     }
   }
-
-  var indexesToRemove = [];
-
-  for (var i = products.length - 1; i >= 0; i--) {
-    if (products[i].is_vegan == 1 && alergenen[0].selected == true) {
-      indexesToRemove.push(i);
+  for (var i = 0; i < products.length; i++) {
+    var productAllergenen = [];
+    if (products[i].is_veggie == 1) {
+      productAllergenen.push(1);
     } 
-    if (products[i].is_veggie == 1 && alergenen[1].selected == true) {
-      indexesToRemove.push(i);
+    if (products[i].is_vegan == 1) {
+      productAllergenen.push(2);
     } 
-    if (products[i].is_frozen == 1 && alergenen[2].selected == true) {
+    if (products[i].is_sold_out == 1) {
+      productAllergenen.push(3);
+    } 
+    if (products[i].is_frozen == 1) {
+      productAllergenen.push(4);
+    }
+    if (products[i].is_home_grown == 1) {
+      productAllergenen.push(5);
+    }
+    if (products[i].is_holiday == 1) {
+      productAllergenen.push(6);
+    } 
+
+    console.log(i + ':  ' + productAllergenen);
+
+    const hasCommonElement = productAllergenen.some((element) => selectedAlergenen.includes(element));
+
+    if (hasCommonElement) {
       indexesToRemove.push(i);
     }
-    if (products[i].is_holiday == 1 && alergenen[3].selected == true) {
-      indexesToRemove.push(i);
-    } 
-    if (products[i].is_home_grown == 1 && alergenen[4].selected == true) {
-      indexesToRemove.push(i);
-    } 
-    if (products[i].is_sold_out == 1 && alergenen[5].selected == true) {
-      indexesToRemove.push(i);
-    } 
+
+    
+    console.log('selectedAlergenen: ' + selectedAlergenen);
+
+ 
+
   }
 
   for (var j = 0; j < indexesToRemove.length; j++) {
     nieuweProducten.splice(indexesToRemove[j], 1);
-    setProducts(products);
+    setProducts(nieuweProducten);
   }
+
+  console.log(products);
+}
+function test() {
+  console.log(origineelProduct);
+}
 
 
   
 
 
-  return (
+  return ( 
+     <div id="root">
+       <AppLayout >
+        <div className='flex'>
+         <div className='w-1/4'>
+       <SideNav catSlug={categorySlug} alergenen={alergenen} changeCheckBox={changeCheckBox}/>
+         </div>
+         <div className='w-3/4'>
 
-    
-
- 
-    <div id="root">
-
-      <AppLayout ></AppLayout>
-
-
-      <div className='flex'>
-        <div className='w-1/4'>
-
-          <SideNav catSlug={categorySlug} alergenen={alergenen} changeCheckBox={changeCheckBox}/>
-        </div>
-        <div className='w-3/4'>
-
-          <Product products={products}/>
-        </div>
-        
-
-        
-
-      </div>
-
-
-      
-
-      
-
-
-
-
-      
+           <Product products={products}/>
+         </div>
+       </div>
+       </AppLayout>
        
-
-      
-    </div>
-
-    
-
-    
-
-
-
+     </div>
 
   )
+
 }

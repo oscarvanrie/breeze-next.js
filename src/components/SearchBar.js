@@ -2,6 +2,7 @@ import { Fragment, useState, useEffect } from 'react'
 import { Combobox, Dialog, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { ExclamationCircleIcon} from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 
 import fetchProductQuery from '@/hooks/api/fetchProductQuery';
@@ -23,14 +24,19 @@ export default function SearchBar({open, setOpen}) {
   const [query, setQuery] = useState('');
   const [] = useState(true);
   const [items, setItems] = useState([]);
-  
-  
+  const [allProducts, setAllProducts] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {    
       if (query != '') {
         const response = await fetchProductQuery(query);
         setItems(response.data);
+        if (response.data.length == 4) {
+            
+          setAllProducts(response.data);
+        }
         return response.data;
+
       }  
 
     };
@@ -38,26 +44,16 @@ export default function SearchBar({open, setOpen}) {
     fetchData();
   }, [query]);
 
+  function getProductID(name) {
+    for (var i = 0; i < allProducts.length; i++ ) {
+      if (allProducts[i].name == name) {
+        return i;
+      }
+    }
+  }
 
-
-
-
-
-
-
-
-
-/*
-  const filteredItems =
-    query === ''
-      ? []
-      : items.filter((item) => {
-          return item.name.toLowerCase().includes(query.toLowerCase());
-        })
-
-        */
-
-  return (<Transition.Root show={open} as={Fragment} afterLeave={() => setQuery('')} appear>
+  return (
+  <Transition.Root show={open} as={Fragment} afterLeave={() => setQuery('')} appear>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
@@ -82,7 +78,7 @@ export default function SearchBar({open, setOpen}) {
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
-              <Combobox onChange={(item) => (window.location = item.url)}>
+              <Combobox>
                 <div className="relative">
                   <MagnifyingGlassIcon
                     className="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400"
@@ -99,14 +95,14 @@ export default function SearchBar({open, setOpen}) {
                 {items.length > 0 && (
                   <Combobox.Options static className="max-h-96 scroll-py-3 overflow-y-auto p-3">
                     {items.map((item) => (
+
+                      <Link href={'/productDetails/' + getProductID(item.name)}>
                       <Combobox.Option
-                        key={item.PLU}
-                        value={item}
                         className={({ active }) =>
                           classNames('flex cursor-default select-none rounded-xl p-3', active && 'bg-gray-100')
                         }
                       >
-                        {({ active }) => (
+                      {({ active }) => (
                           <>
                             <div
                               className={classNames(
@@ -132,6 +128,8 @@ export default function SearchBar({open, setOpen}) {
                           </>
                         )}
                       </Combobox.Option>
+                      
+                      </Link>
                     ))}
                   </Combobox.Options>
                 )}

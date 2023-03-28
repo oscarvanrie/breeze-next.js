@@ -5,6 +5,8 @@ import cookie from 'cookie';
 import { useState } from 'react';
 import SearchBar from '../SearchBar';
 import ShoppingCart from './ShoppingCart';
+import Footer from '../Footer';
+import { Main } from 'next/document';
 
 
 
@@ -31,6 +33,12 @@ const AppLayout = ({ header, children }) => {
             <Navigation user={user} clickCart={CartIsClicked} clickSearch={SearchIsClicked} />
             <SearchBar open={openSearch} setOpen={setOpenSearch}/>
             <ShoppingCart open={openCart} setOpen={setOpenCart} />
+
+            <main>{children}</main>
+
+            <Footer />
+
+
            
             
 
