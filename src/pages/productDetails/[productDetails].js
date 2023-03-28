@@ -11,10 +11,7 @@ export default function productDetails() {
   const router = useRouter();
   const productId = router.query.productDetails;
 
-  function test() {
-      console.log(product);
 
-  }
 
 
 
@@ -22,7 +19,7 @@ export default function productDetails() {
   useEffect(() => {
     const fetchData = async () => {      
       const response = await fetchProducts();
-      setProduct(response.data);
+      setProducts(response.data);
       return response.data;
   
     };
@@ -34,9 +31,7 @@ export default function productDetails() {
   return ( 
      <div id="root">
        <AppLayout >
-        <DetailsAboutProducts product={product} />
-
-        <button onClick={test}>test</button>
+        <DetailsAboutProducts product={products[0]} />
 
        </AppLayout>
        
