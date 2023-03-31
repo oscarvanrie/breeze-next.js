@@ -46,12 +46,9 @@ export default function SideNav({catSlug, alergenen, setAlergenen, changeCheckBo
         const fetchData = async () => {    
           try {
             const response = await fetchSubCategories();
-            setsubCategories(response.data)
+            setsubCategories(response)
+            console.log(subCategories);
             if (subcategories) {
-              
-              setsubCategories('');
-
-
               setsubCategories(subcategories);
 
 

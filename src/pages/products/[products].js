@@ -8,6 +8,7 @@ import fetchProducts from '@/hooks/api/fetchProducts';
 import SideNav from '@/components/Layouts/SideNav';
 import AppLayout from '@/components/Layouts/AppLayout';
 import { faSeedling, faIcicles, faGift, faBox } from '@fortawesome/free-solid-svg-icons';
+import fetchProductsAndSubCat from '@/hooks/api/fetchProductsAndSubCat';
 
 export default function Category() {
   
@@ -29,18 +30,45 @@ export default function Category() {
 
 
 
+  // useEffect(() => {
+  //   arrayData = [];
+  //   const fetchData = async () => {      
+  //     const response = await fetchProducts();
+  //     setProducts(response);
+
+
+      
+  //     console.log(response);
+  //     for (var i = 0; i < response.length; i++) {
+  //       console.log(response[0]);
+        
+
+  //       // if (response[i].subcategory.slug == categorySlug) {
+  //       //   arrayData.push(response.data[i]);
+  //       // }
+  //     }
+  //     setOrigineleProducts(arrayData);
+      
+      
+  //     setProducts(arrayData);
+  //     return arrayData;
+  //   };
+
   useEffect(() => {
     arrayData = [];
     const fetchData = async () => {      
-      const response = await fetchProducts();
+      const response = await fetchProductsAndSubCat();
       setProducts(response);
 
 
       
-      
+      console.log(response);
       for (var i = 0; i < response.length; i++) {
+        console.log(response[0]);
+        
+
         if (response[i].subcategory.slug == categorySlug) {
-          arrayData.push(response.data[i]);
+          arrayData.push(response[i]);
         }
       }
       setOrigineleProducts(arrayData);

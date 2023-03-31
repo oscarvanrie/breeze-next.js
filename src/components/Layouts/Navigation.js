@@ -38,6 +38,7 @@ export default function Navigation({user, clickSearch, clickCart, setUser}) {
     const fetchData = async () => {  
       const response = await fetchSubCategories();
       setsubCategories(response);
+      console.log(subCategories);
       return response;
     };
     fetchData();

@@ -10,6 +10,5 @@ export default async function fetchCategories(i) {
       
     const response = await fetch("http://localhost:8000/api/categories", requestOptions);
     const data = await response.json();
-    console.log(data[0]);
-    return data[0];
+    return data;
 }

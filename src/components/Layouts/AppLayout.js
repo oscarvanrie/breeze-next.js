@@ -9,7 +9,7 @@ import Footer from '../Footer';
 
 export default function AppLayout({children}) {   
     var { user } = useAuth({ middleware: 'auth' });
-    user = user[0][0]
+    user = user
 
     const [openSearch, setOpenSearch] = useState(false);
     const [openCart, setOpenCart] = useState(false);

@@ -26,11 +26,11 @@ export default function SearchBar({open, setOpen}) {
     const fetchData = async () => {    
       if (query != '') {
         const response = await fetchProductQuery(query);
-        setItems(response[0]);
-        console.log(response[0]);
-        if (response[0].length == 4) {
+        setItems(response);
+        console.log(items);
+        if (response.length == 4) {
             
-          setAllProducts(response[0]);
+          setAllProducts(response);
         }
         return response.data;
 

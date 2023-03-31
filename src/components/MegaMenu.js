@@ -10,8 +10,6 @@ function classNames(...classes) {
 export default function MegaMenu({navigation, subCategories, categories}) {
 
 
-
-    
     return(
         
      <Popover.Group className="ml-8">
@@ -52,7 +50,7 @@ export default function MegaMenu({navigation, subCategories, categories}) {
                           <div className="grid grid-cols-1 items-start gap-y-10 gap-x-8 pt-10 pb-12">
                             <div className="grid grid-cols-7 gap-y-10 gap-x-8">
                                
-                              {categories.map((sCat, index) => (  
+                              {subCategories.map((sCat, index) => (  
                                 <div>
                                   <p className="font-medium text-gray-900">
                                     <Link
@@ -66,9 +64,7 @@ export default function MegaMenu({navigation, subCategories, categories}) {
                                         >
                                             
                                             
-                                            {subCategories
-                                              .filter((item) => item.category_id == (index + 1))
-                                              .map((item) => (
+                                            {sCat.subcategories.map((item) => (
                                                 <li key={item.description} className="flex">
                                                   <Link href={`/products/${item.slug}`} className="hover:text-gray-800">
                                                     {item.description}

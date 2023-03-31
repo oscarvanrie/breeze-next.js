@@ -10,8 +10,7 @@ export default async function fetchProducts() {
       
     const response = await fetch("http://localhost:8000/api/products", requestOptions);
     const data = await response.json();
-    console.log(data[0]);
-    return data[0];
+    return data;
     
 }
   

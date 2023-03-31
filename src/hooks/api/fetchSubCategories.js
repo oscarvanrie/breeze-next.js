@@ -10,9 +10,9 @@ export default async function fetchSubCategories() {
       redirect: 'follow'
     };
       
-    const response = await fetch("http://localhost:8000/api/subcategories", requestOptions);
+    const response = await fetch("http://localhost:8000/api/categories?include=subcategories", requestOptions);
     const data = await response.json();
 
     
-    return data[0];
+    return data;
 }
