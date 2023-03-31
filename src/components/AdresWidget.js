@@ -1,6 +1,6 @@
 import AdresForm from "./AdresForm";
 import { useState } from "react";
-export default function AdresWidget({addresses, setAddresses,name, email, address, index }) {
+export default function AdresWidget({addresses, setAddresses, address, index }) {
     
     const [showModal, setShowModal] = useState(false);
     return (

@@ -27,7 +27,6 @@ export default function SearchBar({open, setOpen}) {
       if (query != '') {
         const response = await fetchProductQuery(query);
         setItems(response);
-        console.log(items);
         if (response.length == 4) {
             
           setAllProducts(response);

@@ -44,10 +44,8 @@ export default function AdresDisplay() {
             zip: '54321',
           },
         },
-      ]);
+    ]);
 
-      console.log(addresses);
-      
     return (
         <>
 

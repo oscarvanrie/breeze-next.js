@@ -1,8 +1,7 @@
 import { BuildingOffice2Icon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
 
-export default function 
-ContactInformation() {
+export default function ContactInformation() {
     return(
         <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600">
               <div className="flex gap-x-4">

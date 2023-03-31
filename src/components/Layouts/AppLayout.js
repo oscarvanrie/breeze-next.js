@@ -9,10 +9,12 @@ import Footer from '../Footer';
 
 export default function AppLayout({children}) {   
     var { user } = useAuth({ middleware: 'auth' });
-    user = user
+    console.log(user);
 
     const [openSearch, setOpenSearch] = useState(false);
     const [openCart, setOpenCart] = useState(false);
+
+
 
 
     function SearchIsClicked() {
@@ -20,16 +22,13 @@ export default function AppLayout({children}) {
     }
     function CartIsClicked() {
         setOpenCart(!openCart);
-
     }
-
-
 
 
 
     return (
         <div>
-            <Navigation user={user} clickCart={CartIsClicked} clickSearch={SearchIsClicked} />
+            <Navigation user={user} clickCart={setOpenCart} clickSearch={SearchIsClicked} />
             <SearchBar open={openSearch} setOpen={setOpenSearch}/>
             <ShoppingCart open={openCart} setOpen={setOpenCart} />
 

@@ -22,16 +22,7 @@ const navigation = {
 
 export default function Navigation({user, clickSearch, clickCart, setUser}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
-  
-  useEffect(() => {
-    const fetchData = async () => {      
-      const response = await fetchCategories();
-      setCategories(response);
-      return response;
-    };
-    fetchData();
-  }, []);
+
 
   const [subCategories, setsubCategories] = useState([]);
   useEffect(() => {
@@ -61,7 +52,7 @@ export default function Navigation({user, clickSearch, clickCart, setUser}) {
                       <Logo />
                   </div>
                   <div className="hidden h-full lg:flex">
-                    <MegaMenu navigation={navigation} subCategories={subCategories} categories={categories}/>
+                    <MegaMenu navigation={navigation} subCategories={subCategories} />
                   </div>
                   <div className="flex flex-1 items-center lg:hidden">
                     <button
@@ -95,13 +86,6 @@ export default function Navigation({user, clickSearch, clickCart, setUser}) {
           </div>
         </nav>
       </header>
-
-
-
-
-      
-
-      
     </div>
   )
 }

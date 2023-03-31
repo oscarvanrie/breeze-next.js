@@ -7,7 +7,7 @@ function classNames(...classes) {
 }
 
 
-export default function MegaMenu({navigation, subCategories, categories}) {
+export default function MegaMenu({navigation, subCategories}) {
 
 
     return(

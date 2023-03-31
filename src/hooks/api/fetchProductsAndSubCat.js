@@ -10,6 +10,5 @@ export default async function fetchProductsAndSubCat() {
       
     const response = await fetch("http://localhost:8000/api/products?include=subcategory", requestOptions);
     const data = await response.json();
-    console.log(data);
     return data;
 }

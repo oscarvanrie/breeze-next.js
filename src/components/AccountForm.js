@@ -4,7 +4,7 @@ import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 export default function AccountForm() {
     
     var { user } = useAuth({ middleware: 'auth' });
-    var user = user[0][0];
+    
 
 
   return (

@@ -2,7 +2,7 @@ import NoProductsFound from "../NoProductsFound";
 import SingleProduct from "../SingleProduct";
 
 export default function Product({products}) {
-  if (products == undefined) {
+  if (products[0] == undefined) {
     return (
       <NoProductsFound />
     )
@@ -20,8 +20,3 @@ export default function Product({products}) {
     )
   }  
 }
-
-// http://192.168.10.208\api\login
-
-// http://id207038_api.db.webhosting.be/api/login
-
