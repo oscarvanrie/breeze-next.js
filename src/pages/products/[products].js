@@ -18,6 +18,7 @@ export default function Category() {
   const categorySlug = router.query.products;
   
   
+  
 
   
   const [products, setProducts] = useState([]);
@@ -32,16 +33,16 @@ export default function Category() {
     arrayData = [];
     const fetchData = async () => {      
       const response = await fetchProducts();
-      setProducts(response.data);
-      
-      
-      for (var i = 0; i < response.data.length; i++) {
-        if (response.data[i].subcategory.slug == categorySlug) {
-          arrayData.push(response.data[i]);
+      setProducts(response);
 
+
+      
+      
+      for (var i = 0; i < response.length; i++) {
+        if (response[i].subcategory.slug == categorySlug) {
+          arrayData.push(response.data[i]);
         }
       }
-      console.log('veranderd');
       setOrigineleProducts(arrayData);
       
       
@@ -52,6 +53,8 @@ export default function Category() {
     
     fetchData();
   }, [categorySlug]);
+
+
 
 
 

@@ -112,6 +112,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         if (middleware === 'auth' && error) logout()
     }, [user, error])
 
+
+
     return {
         user,
         register,

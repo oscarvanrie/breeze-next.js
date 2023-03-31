@@ -8,7 +8,8 @@ export default async function fetchCategories(i) {
       redirect: 'follow'
     };
       
-    const response = await fetch("http://192.168.10.208/api/categories", requestOptions);
+    const response = await fetch("http://localhost:8000/api/categories", requestOptions);
     const data = await response.json();
-    return data;
+    console.log(data[0]);
+    return data[0];
 }

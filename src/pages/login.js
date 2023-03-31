@@ -47,6 +47,8 @@ const Login = () => {
         })
     }
 
+    console.log(login)
+
     return (
         <GuestLayout>
             <AuthCard

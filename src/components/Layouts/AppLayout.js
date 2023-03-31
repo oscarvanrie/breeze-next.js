@@ -1,21 +1,20 @@
 import Navigation from '@/components/Layouts/Navigation'
 import { useAuth } from '@/hooks/auth'
 import React from 'react';
-import cookie from 'cookie';
 import { useState } from 'react';
 import SearchBar from '../SearchBar';
 import ShoppingCart from './ShoppingCart';
 import Footer from '../Footer';
-import { Main } from 'next/document';
 
 
+export default function AppLayout({children}) {   
+    var { user } = useAuth({ middleware: 'auth' });
+    user = user[0][0]
 
-const AppLayout = ({ header, children }) => {   
-    const { user } = useAuth({ middleware: 'auth' });
-
-    
     const [openSearch, setOpenSearch] = useState(false);
     const [openCart, setOpenCart] = useState(false);
+
+
     function SearchIsClicked() {
         setOpenSearch(!openSearch);
     }
@@ -37,13 +36,6 @@ const AppLayout = ({ header, children }) => {
             <main>{children}</main>
 
             <Footer />
-
-
-           
-            
-
         </div>
     )
 }
-
-export default AppLayout

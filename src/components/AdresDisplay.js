@@ -1,8 +1,5 @@
-import SubCategoryWidget from "./SubCategoryWidget";
-import Link from "next/link";
 import AdresWidget from "./AdresWidget";
 import { useState } from "react";
-import AdresForm from "./AdresForm";
 
 export default function AdresDisplay() {
     

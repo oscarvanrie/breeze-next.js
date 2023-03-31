@@ -77,8 +77,6 @@ export default function SideNav({catSlug, alergenen, setAlergenen, changeCheckBo
           if (i != selectedIndex) {
             setSelectedIndex(i);
           }
-
-          
         }
         i++;
       });

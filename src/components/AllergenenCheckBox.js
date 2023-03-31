@@ -1,5 +1,3 @@
-import CheckBox from "./CheckBox"
-
 export default function AllergenenCheckBox({selected}) {
     if (selected == true) {
       return (

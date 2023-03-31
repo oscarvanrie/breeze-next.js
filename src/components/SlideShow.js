@@ -1,24 +1,10 @@
 
 import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
-import {useEffect, useState} from 'react';
 
 export default function SlideShow() {
-  const [windowSize, setWindowSize] = useState(getWindowSize());
-  function getWindowSize() {
-    
-  }
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
+   
 
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
 
 
   
@@ -38,7 +24,7 @@ export default function SlideShow() {
    ];
    
    return (
-      <div>
+      <div className="mt-20 z-0">
          <SimpleImageSlider
             width={1530}
             height={500}

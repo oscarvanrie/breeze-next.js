@@ -2,12 +2,9 @@ import { Fragment, useState, useEffect } from 'react'
 import { Combobox, Dialog, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { ExclamationCircleIcon} from '@heroicons/react/24/outline'
-import Link from 'next/link'
-
-
+import Link from 'next/link';
 import fetchProductQuery from '@/hooks/api/fetchProductQuery';
 
-import axios from 'axios'
 
 
 
@@ -22,7 +19,6 @@ export default function SearchBar({open, setOpen}) {
 
   
   const [query, setQuery] = useState('');
-  const [] = useState(true);
   const [items, setItems] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
 
@@ -30,10 +26,11 @@ export default function SearchBar({open, setOpen}) {
     const fetchData = async () => {    
       if (query != '') {
         const response = await fetchProductQuery(query);
-        setItems(response.data);
-        if (response.data.length == 4) {
+        setItems(response[0]);
+        console.log(response[0]);
+        if (response[0].length == 4) {
             
-          setAllProducts(response.data);
+          setAllProducts(response[0]);
         }
         return response.data;
 
@@ -155,4 +152,3 @@ export default function SearchBar({open, setOpen}) {
   )
 }
 
-// ?

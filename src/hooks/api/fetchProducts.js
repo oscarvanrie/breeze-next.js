@@ -8,10 +8,10 @@ export default async function fetchProducts() {
       redirect: 'follow'
     };
       
-    const response = await fetch("http://192.168.10.208/api/products", requestOptions);
+    const response = await fetch("http://localhost:8000/api/products", requestOptions);
     const data = await response.json();
-    console.log(data);
-    return data;
+    console.log(data[0]);
+    return data[0];
     
 }
   

@@ -31,8 +31,8 @@ export default function Home() {
     
     <AppLayout>
 
-    <SlideShow />
     <NieuwsteProducten />
+    <SlideShow />
       
     </AppLayout>
 

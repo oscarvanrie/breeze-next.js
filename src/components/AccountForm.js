@@ -1,24 +1,11 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { useAuth } from '@/hooks/auth';
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
 export default function AccountForm() {
     
-    const { user } = useAuth({ middleware: 'auth' });
-    console.log(user.name);
+    var { user } = useAuth({ middleware: 'auth' });
+    var user = user[0][0];
+
 
   return (
     <form className="w-10/12 mx-auto my-20 ">

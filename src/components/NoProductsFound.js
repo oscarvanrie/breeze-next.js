@@ -1,6 +1,5 @@
-import { ExclamationCircleIcon } from "@heroicons/react/24/outline"
-import RssIcon from "@heroicons/react/24/outline";
 import Error from "./Error";
+
 export default function NoProductsFound() {
  
     return (

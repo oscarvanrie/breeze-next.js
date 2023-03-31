@@ -1,7 +1,5 @@
-import MegaMenu from "./MegaMenu"
 import { useState, useEffect } from "react";
 import fetchSubCategories from "@/hooks/api/fetchSubCategories";
-import Link from "next/link";
 import ContactInformation from "./ContactInformation";
 import About from "./About";
 

@@ -8,7 +8,7 @@ export default async function fetchProductQuery(query) {
       headers: myHeaders,
       redirect: 'follow'
     };
-    var url = "http://192.168.10.208/api/products?filter[name]=" + query;
+    var url = "http://localhost:8000/api/products?filter[name]=" + query;
       
     const response = await fetch(url, requestOptions);
     const data = await response.json();

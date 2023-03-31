@@ -7,7 +7,9 @@ function classNames(...classes) {
 }
 
 
-export default function MegaMenu({navigation, subCategories}) {
+export default function MegaMenu({navigation, subCategories, categories}) {
+
+
 
     
     return(
@@ -46,11 +48,11 @@ export default function MegaMenu({navigation, subCategories}) {
                       <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
           
                       <div className="relative bg-white">
-                        <div className="mx-auto max-w-7xl px-8">
+                        <div className="mx-auto max-w-7xl px-8 z-20">
                           <div className="grid grid-cols-1 items-start gap-y-10 gap-x-8 pt-10 pb-12">
                             <div className="grid grid-cols-7 gap-y-10 gap-x-8">
                                
-                              {subCategories.map((sCat, index) => (  
+                              {categories.map((sCat, index) => (  
                                 <div>
                                   <p className="font-medium text-gray-900">
                                     <Link
@@ -64,13 +66,17 @@ export default function MegaMenu({navigation, subCategories}) {
                                         >
                                             
                                             
-                                          {sCat.subcategories.map((item) => (
-                                            <li key={item.description} className="flex">
-                                              <Link href={`/products/${item.slug}`} className="hover:text-gray-800">
-                                                 {item.description}
-                                              </Link>
-                                            </li>
-                                          ))}
+                                            {subCategories
+                                              .filter((item) => item.category_id == (index + 1))
+                                              .map((item) => (
+                                                <li key={item.description} className="flex">
+                                                  <Link href={`/products/${item.slug}`} className="hover:text-gray-800">
+                                                    {item.description}
+                                                  </Link>
+                                                </li>
+                                              ))
+                                            }
+
                                           
                                           
                                         </ul>

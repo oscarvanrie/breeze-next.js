@@ -1,4 +1,3 @@
-import Link from "next/link";
 import AdresForm from "./AdresForm";
 import { useState } from "react";
 export default function AdresWidget({addresses, setAddresses,name, email, address, index }) {
